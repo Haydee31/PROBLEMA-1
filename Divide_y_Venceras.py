@@ -13,7 +13,28 @@ def crear_matriz(fila_ini, fila_fin, n):
     mitad = (fila_ini + fila_fin) // 2
     superior = crear_matriz(fila_ini, mitad,     n)      
     inferior  = crear_matriz(mitad + 1, fila_fin, n)     
-    return superior + inferior                           
+    return superior + inferior 
+
+def mostrar_fila(fila, inicio, fin):
+
+    if inicio == fin:
+        print(f"{fila[inicio]:>5}", end="")
+        return
+    mitad = (inicio + fin) // 2
+    mostrar_fila(fila, inicio, mitad)
+    mostrar_fila(fila, mitad + 1, fin)
+ 
+def mostrar_matriz(matriz, fila_ini, fila_fin, n):
+    if fila_ini == fila_fin:
+        mostrar_fila(matriz[fila_ini], 0, n - 1)
+        print()                                          
+        return
+    mitad = (fila_ini + fila_fin) // 2
+    mostrar_matriz(matriz, fila_ini, mitad,      n)
+    mostrar_matriz(matriz, mitad + 1, fila_fin,  n)
+ 
+
+                          
  
 
  
