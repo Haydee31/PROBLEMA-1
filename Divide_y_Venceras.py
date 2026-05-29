@@ -7,30 +7,30 @@ def crear_fila(inicio, fin):
     derecha   = crear_fila(mitad + 1, fin)    
     return izquierda + derecha    
              
-def crear_matriz(fila_ini, fila_fin, n):
-    if fila_ini == fila_fin:                            
+def crear_matriz(fila_inicio, fila_fin, n):
+    if fila_inicio == fila_fin:                            
         return [crear_fila(0, n - 1)]
-    mitad = (fila_ini + fila_fin) // 2
-    superior = crear_matriz(fila_ini, mitad,     n)      
+    mitad = (fila_inicio + fila_fin) // 2
+    superior = crear_matriz(fila_inicio, mitad,     n)      
     inferior  = crear_matriz(mitad + 1, fila_fin, n)     
     return superior + inferior 
 
 def mostrar_fila(fila, inicio, fin):
 
     if inicio == fin:
-        print(f"{fila[inicio]:>5}", end="")
+        print(f"{fila[inicio]:5d}", end="")
         return
     mitad = (inicio + fin) // 2
     mostrar_fila(fila, inicio, mitad)
     mostrar_fila(fila, mitad + 1, fin)
  
-def mostrar_matriz(matriz, fila_ini, fila_fin, n):
-    if fila_ini == fila_fin:
-        mostrar_fila(matriz[fila_ini], 0, n - 1)
+def mostrar_matriz(matriz, fila_inicio, fila_fin, n):
+    if fila_inicio == fila_fin:
+        mostrar_fila(matriz[fila_inicio], 0, n - 1)
         print()                                          
         return
-    mitad = (fila_ini + fila_fin) // 2
-    mostrar_matriz(matriz, fila_ini, mitad,      n)
+    mitad = (fila_inicio + fila_fin) // 2
+    mostrar_matriz(matriz, fila_inicio, mitad,      n)
     mostrar_matriz(matriz, mitad + 1, fila_fin,  n)
  
 def es_multiplo(numero):
@@ -44,16 +44,16 @@ def contar_fila(fila, inicio, fin):
     derecha   = contar_fila(fila, mitad + 1, fin)       
     return izquierda + derecha                           
  
-def contar_matriz(matriz, fila_ini, fila_fin, n):
-    if fila_ini == fila_fin:                             
-        return contar_fila(matriz[fila_ini], 0, n - 1)
+def contar_matriz(matriz, fila_inicio, fila_fin, n):
+    if fila_inicio == fila_fin:                             
+        return contar_fila(matriz[fila_inicio], 0, n - 1)
     
-    mitad = (fila_ini + fila_fin) // 2
-    superior = contar_matriz(matriz, fila_ini, mitad,      n)   
+    mitad = (fila_inicio + fila_fin) // 2
+    superior = contar_matriz(matriz, fila_inicio, mitad,      n)   
     inferior  = contar_matriz(matriz, mitad + 1, fila_fin, n)   
     return superior + inferior                                   
 
-n = int(input("Ingrese el número de elementos por lado (N x N): "))
+n = int(input("Ingrese el número de elementos por lado de la Matriz (N x N): "))
 matriz = crear_matriz(0, n - 1, n)
  
 print(f"\nMatriz {n} x {n}:")
@@ -62,8 +62,7 @@ mostrar_matriz(matriz, 0, n - 1, n)
 print("-" * (n * 6))
 
 cantidad = contar_matriz(matriz, 0, n - 1, n)
-print(f"Cantidad de números múltiplos de 5 o de 7: {cantidad}")
-print(f"Total de elementos en la matriz: {n * n}")
+print(f"=> Cantidad de números múltiplos de 5 o 7: {cantidad}")
 
                           
  
