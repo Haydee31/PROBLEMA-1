@@ -52,8 +52,18 @@ def contar_matriz(matriz, fila_ini, fila_fin, n):
     superior = contar_matriz(matriz, fila_ini, mitad,      n)   
     inferior  = contar_matriz(matriz, mitad + 1, fila_fin, n)   
     return superior + inferior                                   
- 
 
+n = int(input("Ingrese el número de elementos por lado (N x N): "))
+matriz = crear_matriz(0, n - 1, n)
+ 
+print(f"\nMatriz {n} x {n}:")
+print("-" * (n * 6))
+mostrar_matriz(matriz, 0, n - 1, n)
+print("-" * (n * 6))
+
+cantidad = contar_matriz(matriz, 0, n - 1, n)
+print(f"Cantidad de números múltiplos de 5 o de 7: {cantidad}")
+print(f"Total de elementos en la matriz: {n * n}")
 
                           
  
