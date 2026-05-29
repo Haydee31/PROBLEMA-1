@@ -33,6 +33,27 @@ def mostrar_matriz(matriz, fila_ini, fila_fin, n):
     mostrar_matriz(matriz, fila_ini, mitad,      n)
     mostrar_matriz(matriz, mitad + 1, fila_fin,  n)
  
+def es_multiplo(numero):
+    return 1 if (numero % 5 == 0 or numero % 7 == 0) else 0
+ 
+def contar_fila(fila, inicio, fin):
+    if inicio == fin:                                   
+        return es_multiplo(fila[inicio])
+    mitad = (inicio + fin) // 2
+    izquierda = contar_fila(fila, inicio, mitad)         
+    derecha   = contar_fila(fila, mitad + 1, fin)       
+    return izquierda + derecha                           
+ 
+def contar_matriz(matriz, fila_ini, fila_fin, n):
+    if fila_ini == fila_fin:                             
+        return contar_fila(matriz[fila_ini], 0, n - 1)
+    
+    mitad = (fila_ini + fila_fin) // 2
+    superior = contar_matriz(matriz, fila_ini, mitad,      n)   
+    inferior  = contar_matriz(matriz, mitad + 1, fila_fin, n)   
+    return superior + inferior                                   
+ 
+
 
                           
  
